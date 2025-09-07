@@ -7,12 +7,16 @@ const ProductItem = ({
   title,
   category,
   price,
+  popularity: _popularity,
+  stock: _stock,
 }: {
   id: string;
   image: string;
   title: string;
   category: string;
   price: number;
+  popularity: number;
+  stock: number;
 }) => {
   return (
     <div className="w-[400px] flex flex-col gap-2 justify-center max-md:w-[300px]">
@@ -20,7 +24,7 @@ const ProductItem = ({
         to={`/product/${id}`}
         className="w-full h-[300px] max-md:h-[200px] overflow-hidden"
       >
-        <img src={`/src/assets/${image}`} alt={title} />
+        <img src={`/assets/${image}`} alt={title} />
       </Link>
       <Link
         to={`/product/${id}`}

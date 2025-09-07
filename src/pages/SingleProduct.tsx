@@ -71,7 +71,7 @@ const SingleProduct = () => {
       <div className="grid grid-cols-3 gap-x-8 max-lg:grid-cols-1">
         <div className="lg:col-span-2">
           <img
-            src={`/src/assets/${singleProduct?.image}`}
+            src={`/assets/${singleProduct?.image}`}
             alt={singleProduct?.title}
           />
         </div>
