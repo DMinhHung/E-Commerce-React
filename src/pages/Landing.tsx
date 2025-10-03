@@ -5,7 +5,7 @@ const Landing = () => {
     <>
       <Banner />
       <HomeCollectionSection />
-      <CategoriesSection />
+      {/* <CategoriesSection /> */}
       
     </>
   );
