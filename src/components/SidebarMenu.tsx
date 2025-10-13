@@ -76,7 +76,7 @@ const SidebarMenu = ({
             >
               Search
             </Link>
-            {loginStatus ? (
+            {/* {loginStatus ? (
               <>
                 <button
                   onClick={logout}
@@ -100,7 +100,7 @@ const SidebarMenu = ({
                   Sign up
                 </Link>
               </>
-            )}
+            )} */}
             <Link
               to="/cart"
               className="py-2 border-y border-secondaryBrown w-full block flex justify-center"

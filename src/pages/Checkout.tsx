@@ -80,7 +80,7 @@ const Checkout = () => {
   return (
     <div className="mx-auto max-w-screen-2xl">
       <div className="pb-24 pt-16 px-5 max-[400px]:px-3">
-        <h2 className="sr-only">Checkout</h2>
+        <h2 className="sr-only">Thanh toán</h2>
 
         <form
           onSubmit={handleCheckoutSubmit}
@@ -89,7 +89,7 @@ const Checkout = () => {
           <div>
             <div>
               <h2 className="text-lg font-medium text-gray-900">
-                Contact information
+                Thông tin liên hệ
               </h2>
 
               <div className="mt-4">
@@ -97,7 +97,7 @@ const Checkout = () => {
                   htmlFor="email-address"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Email address
+                  Địa chỉ email
                 </label>
                 <div className="mt-1">
                   <input
@@ -106,7 +106,7 @@ const Checkout = () => {
                     name="emailAddress"
                     autoComplete="email"
                     className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                    required={true}
+                    required
                   />
                 </div>
               </div>
@@ -114,7 +114,7 @@ const Checkout = () => {
 
             <div className="mt-10 border-t border-gray-200 pt-10">
               <h2 className="text-lg font-medium text-gray-900">
-                Shipping information
+                Thông tin giao hàng
               </h2>
 
               <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
@@ -123,7 +123,7 @@ const Checkout = () => {
                     htmlFor="first-name"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    First name
+                    Họ
                   </label>
                   <div className="mt-1">
                     <input
@@ -132,7 +132,7 @@ const Checkout = () => {
                       name="firstName"
                       autoComplete="given-name"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
@@ -142,7 +142,7 @@ const Checkout = () => {
                     htmlFor="last-name"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Last name
+                    Tên
                   </label>
                   <div className="mt-1">
                     <input
@@ -151,7 +151,7 @@ const Checkout = () => {
                       name="lastName"
                       autoComplete="family-name"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
@@ -161,7 +161,7 @@ const Checkout = () => {
                     htmlFor="company"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Company
+                    Công ty
                   </label>
                   <div className="mt-1">
                     <input
@@ -169,7 +169,7 @@ const Checkout = () => {
                       name="company"
                       id="company"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
@@ -179,7 +179,7 @@ const Checkout = () => {
                     htmlFor="address"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Address
+                    Địa chỉ
                   </label>
                   <div className="mt-1">
                     <input
@@ -188,7 +188,7 @@ const Checkout = () => {
                       id="address"
                       autoComplete="street-address"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
@@ -198,7 +198,7 @@ const Checkout = () => {
                     htmlFor="apartment"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Apartment, suite, etc.
+                    Căn hộ, tòa nhà, v.v.
                   </label>
                   <div className="mt-1">
                     <input
@@ -206,7 +206,7 @@ const Checkout = () => {
                       name="apartment"
                       id="apartment"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
@@ -216,7 +216,7 @@ const Checkout = () => {
                     htmlFor="city"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    City
+                    Thành phố
                   </label>
                   <div className="mt-1">
                     <input
@@ -225,7 +225,7 @@ const Checkout = () => {
                       id="city"
                       autoComplete="address-level2"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
@@ -235,7 +235,7 @@ const Checkout = () => {
                     htmlFor="country"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Country
+                    Quốc gia
                   </label>
                   <div className="mt-1">
                     <select
@@ -243,11 +243,11 @@ const Checkout = () => {
                       name="country"
                       autoComplete="country-name"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     >
-                      <option>United States</option>
+                      <option>Việt Nam</option>
+                      <option>Hoa Kỳ</option>
                       <option>Canada</option>
-                      <option>Mexico</option>
                     </select>
                   </div>
                 </div>
@@ -257,7 +257,7 @@ const Checkout = () => {
                     htmlFor="region"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    State / Province
+                    Tỉnh / Thành phố
                   </label>
                   <div className="mt-1">
                     <input
@@ -266,7 +266,7 @@ const Checkout = () => {
                       id="region"
                       autoComplete="address-level1"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
@@ -276,7 +276,7 @@ const Checkout = () => {
                     htmlFor="postal-code"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Postal code
+                    Mã bưu điện
                   </label>
                   <div className="mt-1">
                     <input
@@ -285,7 +285,7 @@ const Checkout = () => {
                       id="postal-code"
                       autoComplete="postal-code"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
@@ -295,7 +295,7 @@ const Checkout = () => {
                     htmlFor="phone"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Phone
+                    Số điện thoại
                   </label>
                   <div className="mt-1">
                     <input
@@ -304,39 +304,29 @@ const Checkout = () => {
                       id="phone"
                       autoComplete="tel"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Payment */}
+            {/* Thanh toán */}
             <div className="mt-10 border-t border-gray-200 pt-10">
-              <h2 className="text-lg font-medium text-gray-900">Payment</h2>
+              <h2 className="text-lg font-medium text-gray-900">Thanh toán</h2>
 
               <fieldset className="mt-4">
-                <legend className="sr-only">Payment type</legend>
+                <legend className="sr-only">Hình thức thanh toán</legend>
                 <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
                   {paymentMethods.map((paymentMethod, paymentMethodIdx) => (
                     <div key={paymentMethod.id} className="flex items-center">
-                      {paymentMethodIdx === 0 ? (
-                        <input
-                          id={paymentMethod.id}
-                          name="paymentType"
-                          type="radio"
-                          defaultChecked
-                          className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                        />
-                      ) : (
-                        <input
-                          id={paymentMethod.id}
-                          name="paymentType"
-                          type="radio"
-                          className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                        />
-                      )}
-
+                      <input
+                        id={paymentMethod.id}
+                        name="paymentType"
+                        type="radio"
+                        defaultChecked={paymentMethodIdx === 0}
+                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      />
                       <label
                         htmlFor={paymentMethod.id}
                         className="ml-3 block text-sm font-medium text-gray-700"
@@ -354,7 +344,7 @@ const Checkout = () => {
                     htmlFor="card-number"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Card number
+                    Số thẻ
                   </label>
                   <div className="mt-1">
                     <input
@@ -363,7 +353,7 @@ const Checkout = () => {
                       name="cardNumber"
                       autoComplete="cc-number"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
@@ -373,7 +363,7 @@ const Checkout = () => {
                     htmlFor="name-on-card"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Name on card
+                    Tên trên thẻ
                   </label>
                   <div className="mt-1">
                     <input
@@ -382,7 +372,7 @@ const Checkout = () => {
                       name="nameOnCard"
                       autoComplete="cc-name"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
@@ -392,7 +382,7 @@ const Checkout = () => {
                     htmlFor="expiration-date"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Expiration date (MM/YY)
+                    Ngày hết hạn (MM/YY)
                   </label>
                   <div className="mt-1">
                     <input
@@ -401,7 +391,7 @@ const Checkout = () => {
                       id="expiration-date"
                       autoComplete="cc-exp"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
@@ -411,7 +401,7 @@ const Checkout = () => {
                     htmlFor="cvc"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    CVC
+                    Mã CVC
                   </label>
                   <div className="mt-1">
                     <input
@@ -420,7 +410,7 @@ const Checkout = () => {
                       id="cvc"
                       autoComplete="csc"
                       className="block w-full py-2 indent-2 border-gray-300 outline-none focus:border-gray-400 border border shadow-sm sm:text-sm"
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
@@ -428,18 +418,17 @@ const Checkout = () => {
             </div>
           </div>
 
-          {/* Order summary */}
+          {/* Tóm tắt đơn hàng */}
           <div className="mt-10 lg:mt-0">
-            <h2 className="text-lg font-medium text-gray-900">Order summary</h2>
+            <h2 className="text-lg font-medium text-gray-900">Tóm tắt đơn hàng</h2>
 
             <div className="mt-4 border border-gray-200 bg-white shadow-sm">
-              <h3 className="sr-only">Items in your cart</h3>
               <ul role="list" className="divide-y divide-gray-200">
                 {productsInCart.map((product) => (
                   <li key={product?.id} className="flex px-4 py-6 sm:px-6">
                     <div className="flex-shrink-0">
                       <img
-                        src={`/assets/${product?.image}`}
+                        src={`${product?.image}`}
                         alt={product?.title}
                         className="w-20 rounded-md"
                       />
@@ -469,7 +458,7 @@ const Checkout = () => {
                               )
                             }
                           >
-                            <span className="sr-only">Remove</span>
+                            <span className="sr-only">Xóa</span>
                             <TrashIcon className="h-5 w-5" aria-hidden="true" />
                           </button>
                         </div>
@@ -477,12 +466,11 @@ const Checkout = () => {
 
                       <div className="flex flex-1 items-end justify-between pt-2">
                         <p className="mt-1 text-sm font-medium text-gray-900">
-                          ${product?.price}
+                          {product?.price.toLocaleString('vi-VN')} ₫
                         </p>
-
                         <div className="ml-4">
                           <p className="text-base">
-                            Quantity: {product?.quantity}
+                            Số lượng: {product?.quantity}
                           </p>
                         </div>
                       </div>
@@ -492,33 +480,36 @@ const Checkout = () => {
               </ul>
               <dl className="space-y-6 border-t border-gray-200 px-4 py-6 sm:px-6">
                 <div className="flex items-center justify-between">
-                  <dt className="text-sm">Subtotal</dt>
+                  <dt className="text-sm">Tạm tính</dt>
                   <dd className="text-sm font-medium text-gray-900">
-                    ${subtotal}
+                    {subtotal.toLocaleString('vi-VN')} ₫
                   </dd>
                 </div>
                 <div className="flex items-center justify-between">
-                  <dt className="text-sm">Shipping</dt>
+                  <dt className="text-sm">Phí vận chuyển</dt>
                   <dd className="text-sm font-medium text-gray-900">
-                    ${subtotal ? 5 : 0}
+                    {subtotal ? (50000).toLocaleString('vi-VN') : 0} ₫
                   </dd>
                 </div>
                 <div className="flex items-center justify-between">
-                  <dt className="text-sm">Taxes</dt>
+                  <dt className="text-sm">Thuế</dt>
                   <dd className="text-sm font-medium text-gray-900">
-                    ${subtotal ? subtotal / 5 : 0}
+                    {subtotal ? (subtotal * 0.1).toLocaleString('vi-VN') : 0} ₫
                   </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-6">
-                  <dt className="text-base font-medium">Total</dt>
+                  <dt className="text-base font-medium">Tổng cộng</dt>
                   <dd className="text-base font-medium text-gray-900">
-                    ${subtotal ? subtotal + 5 + subtotal / 5 : 0}
+                    {subtotal
+                      ? (subtotal + 50000 + subtotal * 0.1).toLocaleString('vi-VN')
+                      : 0}{' '}
+                    ₫
                   </dd>
                 </div>
               </dl>
 
               <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                <Button text="Confirm Order" mode="brown" />
+                <Button text="Xác nhận đơn hàng" mode="brown" />
               </div>
             </div>
           </div>

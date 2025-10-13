@@ -15,18 +15,39 @@ const Banner: React.FC = () => {
   const [banners, setBanners] = useState<BannerItem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
+  // const fetchBanners = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const res = await axios.get(
+  //       `${import.meta.env.VITE_ADMIN_INSIGHT_URL}/api/v1/end_user/banner/form`
+  //     );
+  //     if (res.data.status) {
+  //       const sortedBanners = (res.data.data.items as BannerItem[]).sort(
+  //         (a, b) => a.sort_order - b.sort_order
+  //       );
+  //       setBanners(sortedBanners);
+  //     }
+  //   } catch (err) {
+  //     console.error("Lỗi khi lấy banner:", err);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const fetchBanners = async () => {
-    setLoading(true);
     try {
-      const res = await axios.get("http://192.168.1.164:8081/api/v1/end_user/banner/form");
+      console.log("API URL:", import.meta.env.VITE_APP_ADMIN_INSIGHT_URL);
+      const res = await axios.get(
+        `${import.meta.env.VITE_APP_ADMIN_INSIGHT_URL}/api/v1/end_user/banner/form`
+      );
       if (res.data.status) {
         const sortedBanners = (res.data.data.items as BannerItem[]).sort(
           (a, b) => a.sort_order - b.sort_order
         );
         setBanners(sortedBanners);
       }
-    } catch (err) {
-      console.error("Lỗi khi lấy banner:", err);
+    } catch (error) {
+      console.error("Error fetching banner:", error);
     } finally {
       setLoading(false);
     }

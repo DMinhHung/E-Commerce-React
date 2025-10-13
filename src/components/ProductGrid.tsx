@@ -31,9 +31,9 @@ const ProductGrid: React.FC = () => {
 
     const fetchProducts = async () => {
       try {
-        console.log("API URL:", import.meta.env.VITE_ADMIN_INSIGHT_URL);
+        console.log("API URL:", import.meta.env.VITE_APP_ADMIN_INSIGHT_URL);
         const res = await axios.get(
-          `${import.meta.env.VITE_ADMIN_INSIGHT_URL}/api/v1/end_user/product/form`
+          `${import.meta.env.VITE_APP_ADMIN_INSIGHT_URL}/api/v1/end_user/product/form`
         );
         setProducts(res.data.data.items || []);
       } catch (error) {

@@ -11,6 +11,14 @@ import {
 } from "../features/cart/cartSlice";
 import toast from "react-hot-toast";
 
+// ✅ Hàm định dạng giá tiền VNĐ
+const formatVND = (value: number) =>
+  new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    maximumFractionDigits: 0,
+  }).format(value);
+
 const Cart = () => {
   const { productsInCart, subtotal } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
@@ -19,12 +27,13 @@ const Cart = () => {
     <div className="bg-white mx-auto max-w-screen-2xl px-5 max-[400px]:px-3">
       <div className="pb-24 pt-16">
         <h1 className="text-3xl tracking-tight text-gray-900 sm:text-4xl">
-          Shopping Cart
+          Giỏ hàng
         </h1>
+
         <form className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
           <section aria-labelledby="cart-heading" className="lg:col-span-7">
             <h2 id="cart-heading" className="sr-only">
-              Items in your shopping cart
+              Các sản phẩm trong giỏ hàng của bạn
             </h2>
 
             <ul
@@ -35,7 +44,7 @@ const Cart = () => {
                 <li key={product.id} className="flex py-6 sm:py-10">
                   <div className="flex-shrink-0">
                     <img
-                      src={`/assets/${product.image}`}
+                      src={`${product.image}`}
                       alt={product.title}
                       className="h-24 w-24 object-cover object-center sm:h-48 sm:w-48"
                     />
@@ -63,24 +72,28 @@ const Cart = () => {
                           ) : null}
                         </div>
                         <p className="mt-1 text-sm font-medium text-gray-900">
-                          ${product.price}
+                          {formatVND(product.price)}
                         </p>
                       </div>
 
                       <div className="mt-4 sm:mt-0 sm:pr-9">
-                        <label htmlFor="quantity mr-5">Quantity: </label>
+                        <label htmlFor="quantity mr-5">Số lượng: </label>
                         <input
                           type="number"
                           id="quantity"
                           className="w-16 h-7 indent-1 bg-white border"
                           value={product?.quantity}
+                          min={1}
                           onChange={(e) => {
-                            dispatch(
-                              updateProductQuantity({
-                                id: product?.id,
-                                quantity: parseInt(e.target.value),
-                              })
-                            );
+                            const value = parseInt(e.target.value);
+                            if (value > 0) {
+                              dispatch(
+                                updateProductQuantity({
+                                  id: product?.id,
+                                  quantity: value,
+                                })
+                              );
+                            }
                           }}
                         />
 
@@ -88,13 +101,14 @@ const Cart = () => {
                           <button
                             type="button"
                             className="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
-                            onClick={() =>{
+                            onClick={() => {
                               dispatch(
                                 removeProductFromTheCart({ id: product?.id })
-                              ); toast.error("Product removed from the cart");}
-                            }
+                              );
+                              toast.error("Đã xóa sản phẩm khỏi giỏ hàng");
+                            }}
                           >
-                            <span className="sr-only">Remove</span>
+                            <span className="sr-only">Xóa</span>
                             <XMarkIcon className="h-5 w-5" aria-hidden="true" />
                           </button>
                         </div>
@@ -113,9 +127,8 @@ const Cart = () => {
                           aria-hidden="true"
                         />
                       )}
-
                       <span>
-                        {product?.stock ? "In stock" : `Out of stock`}
+                        {product?.stock ? "Còn hàng" : "Hết hàng"}
                       </span>
                     </p>
                   </div>
@@ -124,7 +137,7 @@ const Cart = () => {
             </ul>
           </section>
 
-          {/* Order summary */}
+          {/* Tóm tắt đơn hàng */}
           <section
             aria-labelledby="summary-heading"
             className="mt-16 bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
@@ -133,62 +146,51 @@ const Cart = () => {
               id="summary-heading"
               className="text-lg font-medium text-gray-900"
             >
-              Order summary
+              Tóm tắt đơn hàng
             </h2>
 
             <dl className="mt-6 space-y-4">
               <div className="flex items-center justify-between">
-                <dt className="text-sm text-gray-600">Subtotal</dt>
+                <dt className="text-sm text-gray-600">Tạm tính</dt>
                 <dd className="text-sm font-medium text-gray-900">
-                  ${subtotal}
+                  {formatVND(subtotal)}
                 </dd>
               </div>
+
               <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt className="flex items-center text-sm text-gray-600">
-                  <span>Shipping estimate</span>
-                  <a
-                    href="#"
-                    className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500"
-                  >
-                    <span className="sr-only">
-                      Learn more about how shipping is calculated
-                    </span>
-                    <QuestionMarkCircleIcon
-                      className="h-5 w-5 text-secondaryBrown"
-                      aria-hidden="true"
-                    />
-                  </a>
+                  <span>Phí vận chuyển</span>
+                  <QuestionMarkCircleIcon
+                    className="ml-2 h-5 w-5 text-secondaryBrown"
+                    aria-hidden="true"
+                  />
                 </dt>
                 <dd className="text-sm font-medium text-gray-900">
-                  ${subtotal === 0 ? 0 : 5.0}
+                  {formatVND(subtotal === 0 ? 0 : 50000)}
                 </dd>
               </div>
+
               <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt className="flex text-sm text-gray-600">
-                  <span>Tax estimate</span>
-                  <a
-                    href="#"
-                    className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500"
-                  >
-                    <span className="sr-only">
-                      Learn more about how tax is calculated
-                    </span>
-                    <QuestionMarkCircleIcon
-                      className="h-5 w-5 text-secondaryBrown"
-                      aria-hidden="true"
-                    />
-                  </a>
+                  <span>Thuế ước tính (10%)</span>
+                  <QuestionMarkCircleIcon
+                    className="ml-2 h-5 w-5 text-secondaryBrown"
+                    aria-hidden="true"
+                  />
                 </dt>
                 <dd className="text-sm font-medium text-gray-900">
-                  ${subtotal / 5}
+                  {formatVND(subtotal * 0.1)}
                 </dd>
               </div>
+
               <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt className="text-base font-medium text-gray-900">
-                  Order total
+                  Tổng cộng
                 </dt>
                 <dd className="text-base font-medium text-gray-900">
-                  ${subtotal === 0 ? 0 : subtotal + subtotal / 5 + 5}
+                  {formatVND(
+                    subtotal === 0 ? 0 : subtotal + subtotal * 0.1 + 50000
+                  )}
                 </dd>
               </div>
             </dl>
@@ -199,7 +201,7 @@ const Cart = () => {
                   to="/checkout"
                   className="text-white bg-secondaryBrown text-center text-xl font-normal tracking-[0.6px] leading-[72px] w-full h-12 flex items-center justify-center max-md:text-base"
                 >
-                  Checkout
+                  Thanh toán
                 </Link>
               </div>
             )}
@@ -209,4 +211,5 @@ const Cart = () => {
     </div>
   );
 };
+
 export default Cart;
